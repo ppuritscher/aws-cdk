@@ -45,6 +45,18 @@ const pipeline = new codepipeline.Pipeline(this, 'MyFirstPipeline', {
 });
 ```
 
+If key rotation is required for KMS keys, you can configure it by passing
+ `enableKeyRotation: true` when defining the pipeline. Ensure that
+ `crossAccountKeys: true` is also passed. Enabling key rotation will
+ incur an additional cost of **$1/month**.
+
+ ```ts
+ const pipeline = new codepipeline.Pipeline(this, "MyFirstPipeline", {
+   crossAccountKeys: true,
+   enableKeyRotation: true,
+ });
+ ```
+ 
 ## Stages
 
 You can provide Stages when creating the Pipeline:
